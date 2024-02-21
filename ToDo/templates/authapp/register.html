@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+
+        body{
+            background-color: gray;
+        }
+        td{
+            padding: 10px;
+            color:blue;
+        }
+        input{
+            padding: 4px;
+        }
+        table{
+            background-color: azure;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1 align="center" style="color: black;">User Registration </h1>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <table align="center">
+            <tr>
+                <td>
+                    Username : 
+                </td>
+                <td>
+                    <input type="email" name="uname" id="" placeholder="Enter Valid Email Address">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Password : 
+                </td>
+                <td>
+                    <input type="password" name="upass" id="">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Confirm Password : 
+                </td>
+                <td>
+                    <input type="password" name="ucpass" id="">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Email : 
+                </td>
+                <td>
+                    <input type="email" name="uemail" id="" placeholder="Enter Valid Email Address">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3" align="center">
+                    <input type="submit" value="Register">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3" align="center">
+                    <a href="/authapp/login">Already a User? Login</a>
+                </td>
+            </tr>
+                {% if errmsg %}
+                    <tr>
+                        <td colspan="3" style="color: red;">{{errmsg}}</td>
+                    </tr>
+                {% endif %}
+                {% if success %}
+                    <tr>
+                        <td colspan="3" style="color: rgb(13, 233, 60);">{{success}}</td>
+                        <td><a href="/authapp/login"><button>Login</button></a></td>
+                    </tr>
+                {% endif %}
+            
+        </table>
+    </form>
+</body>
+</html>

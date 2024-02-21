@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dashboard</title>
+        <style>
+            /* .t1{
+                width: 900px;
+                height: 50px;
+            } */
+            .b{
+                border-radius: 10px;
+            }
+            table{
+                border: 1px;
+                border-collapse: collapse;
+    
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Hello {{request.user.username}}</h1>
+        {% comment %} <h2 style="color: blue;">ToDo Dashboard</h2> {% endcomment %}
+        <p>
+        <!-- <button><a href="/add_task">ADD Task</a></button> &nbsp;
+        <button><a href="/authapp/logout">Logout</a></button> -->
+        <a href="/add_task"><button>ADD Task</button></a>&nbsp;&nbsp;
+        <a href="/authapp/logout" ><button>logout</button></a>
+        </p>
+    {% comment %}
+        {{a}}
+        <br>
+        Hii,{{User}}
+        <br>
+        {{b}}
+        {% if a > b %}
+        <h1>{{a}}</h1>
+        {% else %}
+        <h1>{{b}}</h1>
+        {% endif %}
+        <hr>
+        {% for x in l %}
+        {{x}}
+        {% endfor %}
+    {% endcomment %}
+    {% comment %}
+        {% for x in data %}
+            ID : {{x.id}} <br>
+            Title : {{x.title}}<br>
+            Detail : {{x.detail}} <br>
+            Due Date : {{x.due_dt}} <br>
+            <hr>
+            <br>
+        {% endfor %}
+    {% endcomment %}
+
+        <table border="1" class="t1">
+            <tr>
+                <th>Sr No.</th>
+                <th>Title</th>
+                <th>Details</th>
+                <th>Due Date</th>
+                <th>Status</th>
+                <th>Action</th>
+                <th>Edit</th>
+                <th>Delete</th> 
+            </tr>
+            {% for x in data %}
+                <tr>
+                    <td>{{x.id}}</td>
+                    {% if x.is_completed == 0 %}
+                    <td>{{x.title}}</td>
+                    <td>{{x.detail}}</td>
+                    <td>{{x.due_dt}}</td>
+                    <td style="color: red;">Pending</td>
+                    {% else %}
+                    <td style="text-decoration: line-through;">{{x.title}}</td>
+                    <td style="text-decoration: line-through;">{{x.detail}}</td>
+                    <td style="text-decoration: line-through;">{{x.due_dt}}</td>
+                    <td style="color: green;">Completed</td>
+                    {% endif %}
+                    <td><a href="/completed/{{x.id}}"><button class="b">Mark as Complete</button></a></td>
+                    <td><a href="/edit/{{x.id}}"><button class="b">Edit</button></a></td>
+                    <td><a href="/delete/{{x.id}}"><button class="b">Delete</button></a></td>
+                </tr>
+            {% endfor %}
+        </table>
+        <script>
+            
+        </script>
+    </body>
+</html>

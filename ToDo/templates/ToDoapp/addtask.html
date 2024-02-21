@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AddTask</title>
+</head>
+<body>
+    
+    <form action="" method="POST">
+        {% csrf_token %}
+        <table border="0" align="center">
+            <tr>
+                <td colspan="2"><h1>Add task Details</h1></td>
+            </tr>
+            <tr>
+                <td><label for="">Title</label></td>
+                <td><input type="text" name="title" id="input1" required></td>
+            </tr>
+            <tr>
+                <td><label for="">Details</label></td>
+                <td><textarea name="det" id="input2" cols="30" rows="10" required></textarea></td>
+            </tr>
+            <tr>
+                <td><label for="">Due Date</label></td>
+                <td><input type="date" name="duedt" id="input3" required></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center" >
+                    <input type="submit" name="subbut" value="Submit">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
